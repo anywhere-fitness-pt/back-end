@@ -75,4 +75,16 @@ router.post("/login", async (req, res, next) => {
 	}
 })
 
+router.get("/:id/classes", async (req, res, next) => {
+	try {
+		const instroctor = await ins_db.findInsClasses(req.params.id)
+        res.status(200).json(instroctor)
+        
+	} catch(err) {
+		next(err)
+	}
+})
+
+
+
 module.exports = router
