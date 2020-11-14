@@ -1,6 +1,7 @@
 exports.up = async function(knex) {
     await knex.schema.createTable("signUp", (table)=>{
         table.increments("id")
+        
         table.integer("client_id")
             .references("id") 
             .inTable("client")
