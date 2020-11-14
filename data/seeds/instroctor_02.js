@@ -2,6 +2,7 @@
 const hashedPassword = "$2a$14$qHqCbXUImiBOgXlFNX47wuA7uFWNGNAZutYLvOeye9eotewGlfYV6"
 
 exports.seed = async function(knex) {
+	await knex("instructor").truncate()
 	await knex("instructor").insert([
 		{ id: 1, username: "kasi1", password: hashedPassword},
 		{ id: 2, username: "kasi2", password: hashedPassword},
