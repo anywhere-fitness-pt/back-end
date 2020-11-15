@@ -4,19 +4,13 @@
 heroku link coming soon------
 
 - Required Login credentials are as follows:
-    |--------------------------------|
-    |  # For Instructor              |  
-    |                                |    
-    |        username:kasi1          |
-    |        password:123            |
-    |--------------------------------|
+    |===============================================|
+    |  # For Instructor  |   # For Client           |  
+    |     username:kasi1 |     username:client1     |    
+    |     password:123   |     password:client1     |
+    |===============================================|
 
-    |--------------------------------|
-    |  # For Client                  |  
-    |                                |    
-    |        username:client1        |
-    |        password:client1        |
-    |--------------------------------|
+   
 
 ENDPOINTS
 -----------------------------------------------------------------------------------------------------
