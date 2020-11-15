@@ -16,7 +16,7 @@ heroku link coming soon------
     
 # api endpoint
 
-| method & endpoint|
+# method & endpoint
 ____________________________________________________
 |post | api/clients/ragister 
 
