@@ -3,28 +3,33 @@
 # Back-end : Anywhere Fitness
 heroku link coming soon------
 
-- Required Login credentials are as follows:
-    |===============================================|
-    |  # For Instructor  |   # For Client           |  
-    |     username:kasi1 |     username:client1     |    
-    |     password:123   |     password:client1     |
-    |===============================================|
+#credentials 
 
+| Instructor login |
+|:-------|:--------------|
+|username|_kasi1_|
+|password|_123_|
    
 
-ENDPOINTS
------------------------------------------------------------------------------------------------------
-METHOD                ROUTE                                  return
------------------------------------------------------------------------------------------------------
-POST    |       /api/clients/register                      | Returns newUser                         |
-POST    |       /api/clients/login                         | Returns welcome {username}/ 404 message |
-GET     |       /api/classes                               | Returns all  classes                    |
-GET     |       /api/classes/:id                           | Returns classes by id                   |
-GET     |       /api/instructor                            | Returns all instructors                 |
-GET     |       /api/instructor/:instructorId/classes      | Returns classes with instructorsId      |
-POST    |       /api/instructor/:instructorsId/classes     |                                         |
-PUT     |       /api/instructor/:instructorId/classes/:id  |  update selected class id               |
-DELETE  |       /api/instructor/:instructorId/classes/:id  |  delete selected class id               | 
-------------------------------------------------------------------------------------------------------
+   |  Client login| |
+|:-------|:--------------|
+|username|_client1_|
+|password|_client1_|
+    
+api endpoint
+
+|# method / endpoint|
+|:-------|:--------------|
+|post | api/clients/ragister |returns new client|
+|post | api/clients/login |returns welcome{username} or 404 errr|
+|GET | /api/classes |Returns all  classes|
+|GET | /api/classes/:id |Returns classes by id|
+|GET | /api/instructor |Returns all instructor|
+|GET |  /api/instructor/:instructorId/classes |Returns classes with instructorsId|
+|POST |  /api/instructor/:instructorId/classes ||
+|PUT |  /api/instructor/:instructorId/classes/:id |update selected class |
+|DELETE |  /api/instructor/:instructorId/classes/:id |remove selected class |
+
+
 
 
