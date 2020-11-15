@@ -20,8 +20,8 @@ router.get("/", async (req, res, next) => {
 // we need to add restriction
 router.post("/register", async (req, res, next) => {
 	try {
-        const { username, password } = req.body
-		const instroctor = await ins_db.findBy({ username }).first()
+        const { username,fullname, password } = req.body
+		const instroctor = await ins_db.findBy({ username}).first()
 
 		if (instroctor) {
 			return res.status(409).json({
@@ -30,7 +30,8 @@ router.post("/register", async (req, res, next) => {
 		}
 
 		const newInstroctor = await ins_db.add({
-			username,
+            username,
+            fullname,
 			password: await bcrypt.hash(password, 14),
 		})
 
@@ -53,7 +54,7 @@ router.post("/login", async (req, res, next) => {
 			})
         }
         
-        const passwordValid = await bcrypt.compare(password, client.password)
+        const passwordValid = await bcrypt.compare(password, instroctor.password)
         if (!passwordValid) {
 			return res.status(401).json({
 				message: "Invalid Credentials",

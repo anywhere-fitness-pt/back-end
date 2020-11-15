@@ -25,23 +25,30 @@ async function add(data) {
      return findById(id)  
 }
 
-async function clientClasses(id) {
-    const clientsignUp = await db("signUp")
-    console.log(clientsignUp)
+ function clientClaSignUp(cls) {
+     return  db("signUp")
+            .insert(cls)
 
-    return db("classesas cl")
-    .join ("signUp as su","su.classes_id", "cl.id")
+}
+
+
+async function findClientClasses(id) {
+    const signUps = await db("signUp")
+    console.log(signUps)
+
+    return db("classes c")
+    .join ("signUp as s","s.classes_id", "c.id")
     .select(
-"su.client_id as clientId",
-"cl.id as classId",
-"cl.categories_id as categoriesId ",
-"cl.name className",
-"cl.description",
-"cl.intensity",
-"cl.time",
-"cl.date",
-"cl.location",
-"cl.maxClassSize",
+"s.client_id as clientId",
+"c.id as classId",
+"c.categories_id as categoriesId ",
+"c.name className",
+"c.description",
+"c.intensity",
+"c.time",
+"c.date",
+"c.location",
+"c.maxClassSize",
     )
     .where({ client_id: id });
 }
@@ -51,5 +58,6 @@ module.exports = {
     findBy,
     findById,
     add,
-    clientClasses
+    findClientClasses,
+    clientClaSignUp
 }
