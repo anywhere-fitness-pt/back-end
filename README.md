@@ -10,6 +10,12 @@ heroku link coming soon------
 |:-------|:--------------|
 |username|_client1_|
 |password|_client1_|
+
+
+
+
+| Instructor login| |
+|:-------|:--------------|
 | Instructor login |
   |username|_kasi1_|
   |password|_123_|
@@ -36,6 +42,19 @@ ____________________________________________________
 |Returns classes by id|
 
 ____________________________________________________
+
+|Post | /api/instructor/login
+
+|returns welcome{username}|
+
+____________________________________________________
+
+|POST | /api/instructor/ragister
+
+|new instructor|
+
+____________________________________________________
+
 
 |GET | /api/instructor 
 
