@@ -36,10 +36,14 @@ ____________________________________________________
 
 |Returns all  classes
 ____________________________________________________
+|GET | /api/classes/classId  
 
-|GET | /api/classes/:id 
+get class by Id
+____________________________________________________
 
-|Returns classes by id|
+|GET | /api/classes/categories/:categoryId 
+
+|Returns classes by category Id|
 
 ____________________________________________________
 
