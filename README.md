@@ -20,7 +20,7 @@ heroku link coming soon------
   |username|_kasi1_|
   |password|_123_|
     
-# api endpoint
+
 
 # method & endpoint
 ____________________________________________________
