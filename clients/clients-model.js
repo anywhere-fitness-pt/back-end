@@ -32,17 +32,14 @@ async function add(data) {
 }
 
 
-async function findClientClasses(id) {
-    const signUps = await db("signUp")
-    console.log(signUps)
-
-    return db("classes c")
-    .join ("signUp as s","s.classes_id", "c.id")
+function findClientClasses(id) {
+    return db("signUp as s")
+    .innerJoin("classes as c", "c.id", "s.classes_id")
+    .innerJoin("client as u", "u.id", "s.client_id ")
     .select(
 "s.client_id as clientId",
 "c.id as classId",
 "c.categories_id as categoriesId ",
-"c.name className",
 "c.description",
 "c.intensity",
 "c.time",
@@ -50,7 +47,7 @@ async function findClientClasses(id) {
 "c.location",
 "c.maxClassSize",
     )
-    .where({ client_id: id });
+    .where( "c.id", id );
 }
 
 module.exports = {
