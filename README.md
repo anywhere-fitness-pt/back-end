@@ -3,87 +3,66 @@
 # Back-end : Anywhere Fitness
 heroku link coming soon------
 
-# credentials 
-   
-
-   |  Client login| |
-|:-------|:--------------|
-|username|_client1_|
-|password|_client1_|
-
-
-
-
-| Instructor login| |
-|:-------|:--------------|
-| Instructor login |
-  |username|_kasi1_|
-  |password|_123_|
-    
-
 
 # method & endpoint
 ____________________________________________________
-|post | api/clients/ragister 
+|post | /api/clients/register 
 
-/returns new client/
+/creates new client/
 ____________________________________________________
-|post | api/clients/login
+|post | /api/clients/login
 
  |returns welcome{username} or 404 errr|
 ____________________________________________________
-|GET | /api/classes  
+|GET | /api/clients/classes  
 
-|Returns all  classes
+|clint can find class list
 ____________________________________________________
-|GET | /api/classes/classId  
+|POST | /api/clients/:client_id/classes/signUp/:class_id
 
-get class by Id
-____________________________________________________
-
-|GET | /api/classes/categories/:categoryId 
-
-|Returns classes by category Id|
-
+clint can sign up for class
 ____________________________________________________
 
-|Post | /api/instructor/login
+|GET | /api/clients/:id/classes 
+
+|clients can look up classes by  Id|
+
+____________________________________________________
+____________________________________________________
+
+|POST | /api/instructor/ragister
+
 
 |returns welcome{username}|
 
 ____________________________________________________
 
-|POST | /api/instructor/ragister
+|Post | /api/instructor/login
 
 |new instructor|
 
 ____________________________________________________
 
 
-|GET | /api/instructor 
+|GET | /api/instructor/:id/classes" 
 
-|Returns all instructor|
-
-____________________________________________________
-
-|GET |  /api/instructor/:instructorId/classes 
-
-|Returns classes with instructorsId|
+|Returns instructorsId classes |
 
 ____________________________________________________
 
 |POST |  /api/instructor/:instructorId/classes 
 
+instructor can add classes
 ____________________________________________________
 
 |PUT |  /api/instructor/:instructorId/classes/:id 
 
-|update selected class|
+|instructor can update classes|
 ____________________________________________________
 
 |DELETE |  /api/instructor/:instructorId/classes/:id 
 
-|remove selected class |
+|instructor can remove classes |
 ____________________________________________________
 
 

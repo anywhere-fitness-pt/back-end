@@ -3,7 +3,7 @@ const express = require('express');
 const db=require("./classes-model")
 
 const router = express.Router()
-// |GET | /api/classes  
+ 
 // ============workes============//
 router.get('/', async (req, res, next) => {
     try{
@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-// |GET | /api/classes/:classId  
+
 // ============workes============//
 
 router.get('/:classId', async (req, res, next) => {
@@ -32,9 +32,9 @@ router.get('/:classId', async (req, res, next) => {
     }
 })
 
-// GET  /api/classes/categories/:categoryId 
 
-// ============workes============//
+
+// ============working============//
 router.get('/categories/:categoriesId', async (req, res, next) => {
     try{
         const classList = await db.findByCatId(req.params.categoriesId)
@@ -51,12 +51,14 @@ router.get('/categories/:categoriesId', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try{
-        const classes = await db.add(req.params.id)
+        const classes = await db.add(req.body)
+        
         if (classes.length > 0) {
 			return res.status(404).json({
 				message: "please add class",
 			})
-		}
+        }
+       
     res.status(201).json(classes)
     }catch(err){
         next(err)

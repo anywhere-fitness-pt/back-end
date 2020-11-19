@@ -6,7 +6,11 @@ const {restrict, passwordValid}=require("../instroctor/ins-middleware")
 
 const router = express.Router()
 
-// we need to add restriction
+
+
+
+
+// ============working============//
 router.get("/", async (req, res, next) => {
 	try {
 		const instroctor = await ins_db.find()
@@ -17,7 +21,10 @@ router.get("/", async (req, res, next) => {
 	}
 })
 
-// we need to add restriction
+
+
+// ============working============//
+
 router.post("/register", async (req, res, next) => {
 	try {
         const { username,fullname, password } = req.body
@@ -42,7 +49,8 @@ router.post("/register", async (req, res, next) => {
 	}
 })
 
-// we need to add restriction
+// ============working============//
+
 router.post("/login", async (req, res, next) => {
 	try {
 		const { username, password } = req.body
@@ -76,6 +84,8 @@ router.post("/login", async (req, res, next) => {
 	}
 })
 
+// ============working============//
+
 router.get("/:id/classes", async (req, res, next) => {
 	try {
 		const instroctor = await ins_db.findInsClasses(req.params.id)
@@ -86,6 +96,10 @@ router.get("/:id/classes", async (req, res, next) => {
 	}
 })
 
+// |POST |  /api/instructor/:instructorId/classes 
 
+// |PUT |  /api/instructor/:instructorId/classes/:id 
+
+// |DELETE |  /api/instructor/:instructorId/classes/:id 
 
 module.exports = router
