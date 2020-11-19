@@ -1,11 +1,14 @@
 const express = require('express');
 // const bcrypt = require("bcryptjs"
 const db=require("./classes-model")
+const {cliRestrict}=require("../clients/restrict")
+const {insRestrict}=require("../instructor/ins-middleware")
+
 
 const router = express.Router()
  
 // ============workes============//
-router.get('/', async (req, res, next) => {
+router.get('/classes',async (req, res, next) => {
     try{
         const classes = await db.find()
         res.json(classes)  
@@ -18,7 +21,7 @@ router.get('/', async (req, res, next) => {
 
 // ============workes============//
 
-router.get('/:classId', async (req, res, next) => {
+router.get('/:classId',insRestrict(), async (req, res, next) => {
     try{
         const classes = await db.findById(req.params.classId)
         if (!classes) {
@@ -35,7 +38,7 @@ router.get('/:classId', async (req, res, next) => {
 
 
 // ============working============//
-router.get('/categories/:categoriesId', async (req, res, next) => {
+router.get('/categories/:categoriesId',insRestrict(), async (req, res, next) => {
     try{
         const classList = await db.findByCatId(req.params.categoriesId)
         if (!classList) {
@@ -49,11 +52,11 @@ router.get('/categories/:categoriesId', async (req, res, next) => {
     }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/',insRestrict(), async (req, res, next) => {
     try{
         const classes = await db.add(req.body)
         
-        if (classes.length > 0) {
+        if (!classes) {
 			return res.status(404).json({
 				message: "please add class",
 			})
@@ -65,23 +68,24 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-// router.put('/:id', async (req, res, next) => {
-//     try{
-//         const classes = await db.update(req.params.id, req.body)
-      
-//     }catch(err){
-//         next(err)
-//     }
-// })
+router.put('/:id',insRestrict(), async (req, res, next) => {
+    try{
+      const classes = await db.update(req.params.id, req.body)
+    res.status(201).json(classes).end()
+    }catch(err){
+        console.log(err)
+        next(err)
+    }
+})
 
-// router.delete('/:id', async (req, res, next) => {
-//     try{
-//         const classes = await db.remove(req.params.id)
-      
-//     }catch(err){
-//         next(err)
-//     }
-// })
+router.delete('/:id',insRestrict(), async (req, res, next) => {
+    try{
+        const deleted = await db.remove(req.params.id)
+        res.status(200).json(deleted).end()
+    }catch(err){
+        next(err)
+    }
+})
 
 
 module.exports = router

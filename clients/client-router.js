@@ -5,18 +5,7 @@ const db = require("../clients/clients-model")
 
 const router = express.Router()
 
-// ============working============//
 
-
-router.get("/", async (req, res, next) => {
-	try {
-		const clients = await db.find()
-        res.json(clients)
-        
-	} catch(err) {
-		next(err)
-	}
-})
 
 
 // ============working============//
@@ -83,20 +72,36 @@ router.post("/login", async (req, res, next) => {
 	}
 })
 
-// !!!!=========notworkig yet=========!!!!//
+// ============working============//
+// clint could find classes list
+router.get("/classes", async (req, res, next) => {
+	try {
+		const clients = await db.find()
+        res.json(clients)
+        
+	} catch(err) {
+		next(err)
+	}
+})
+
+// !!!!=========am getting null???=========!!!!//
 
 router.post("/:client_id/classes/signUp/:class_id", async (req, res, next) => {
+	console.log(signUp)
 	try {
+		
         const signUp={ 
             client_id:req.params.clientId,
-            classes_id:req.params.classId,
-        }
+			classes_id:req.params.classId,
+			
+		}
+		
 		const classes = await db.clientClaSignUp(signUp)
-		if(classes.length > 0){
-		res.status(404).json({message:"please enter required field"})
-		}else{
+		if(!classes){
+		return res.status(404).json({message:"please enter required field"})
+		}
 			res.status(200).json({message:"class created"})
-		} 
+		
         
 	} catch(err) {
 		next(err)
@@ -104,7 +109,7 @@ router.post("/:client_id/classes/signUp/:class_id", async (req, res, next) => {
 })
 
 
-// !!!!=========notworkig yet=========!!!!//
+// !!!!=========its working empty r[] since sign up is null yet=========!!!!//
 router.get("/:id/classes", async (req, res, next) => {
 	try {
 		const clients = await db.findClientClasses(req.params.id)

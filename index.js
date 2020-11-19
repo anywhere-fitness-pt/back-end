@@ -1,17 +1,16 @@
 const express = require("express")
 const clientsRouter = require("./clients/client-router")
-cookieParser=require("cookie-parser")
-const instroctors = require("./instroctor/instroctor-router")
+const cookieParser=require("cookie-parser")
+const instroctors = require("./instructor/instructor-router")
 const classes = require("./classes/classes-router")
 
-
-
-
 const server = express()
-const port = 4000
+const port = process.env.PORT || 5000
+
 server.use(express.json())
+server.use(cookieParser())
 server.use("/api/clients",clientsRouter)
-server.use("/api/instroctor",instroctors)
+server.use("/api/instructor",instroctors)
 server.use("/api/classes",classes)
 
 server.use((err, req, res, next) => {

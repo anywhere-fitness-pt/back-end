@@ -1,8 +1,8 @@
 const db = require("../data/config")
 
 function find() {
-    return db("client")
-    .select("id", "username")
+    return db("classes")
+   
 }
 
 function findBy(filter) {
@@ -37,11 +37,12 @@ function findClientClasses(id) {
     .innerJoin("classes as c", "c.id", "s.classes_id")
     .innerJoin("client as u", "u.id", "s.client_id ")
     .select(
-"s.client_id as clientId",
+"s.client_id ",
 "c.id as classId",
 "c.categories_id as categoriesId ",
 "c.description",
 "c.intensity",
+"c.duration",
 "c.time",
 "c.date",
 "c.location",
