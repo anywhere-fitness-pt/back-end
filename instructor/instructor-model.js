@@ -19,9 +19,12 @@ function findById(id) {
     .where({id})
     .first()
 }
-
-
 async function add(data) {
+    const [id] = await db("instructor").insert(data)
+     return findById(id)  
+}
+
+async function addclasses(data) {
     const [id] = await db("classes").insert(data)
      return findById(id)  
 }
@@ -67,5 +70,6 @@ module.exports = {
     add,
     findInsClasses,
     update,
-    remove
+    remove,
+    addclasses
 }

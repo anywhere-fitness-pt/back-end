@@ -1,3 +1,4 @@
+
 const express = require("express")
 const clientsRouter = require("./clients/client-router")
 const cookieParser=require("cookie-parser")
@@ -20,5 +21,5 @@ server.use((err, req, res, next) => {
 	})
 })
 server.listen(port, () => {
-	console.log(`Running at http://localhost:${port}`)
+	console.log(`\n*** Running at http://localhost:${port}***\n`)
 })
