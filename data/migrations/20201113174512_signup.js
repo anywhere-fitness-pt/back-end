@@ -3,12 +3,14 @@ exports.up = async function(knex) {
         table.increments("id")
         
         table.integer("client_id")
+            .notNull()
             .references("id") 
             .inTable("client")
             .onDelete("CASCADE")
             .onUpdate("CASCADE")
 
         table.integer("classes_id")
+            .notNull()
             .references("id") 
             .inTable("classes")
             .onDelete("CASCADE")

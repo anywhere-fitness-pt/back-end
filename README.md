@@ -33,13 +33,13 @@ ____________________________________________________
 |POST | /api/instructor/ragister
 
 
-|returns welcome{username}|
+|creates a new insttructor|
 
 ____________________________________________________
 
 |Post | /api/instructor/login
 
-|new instructor|
+|returns welcome{username} or err message|
 
 ____________________________________________________
 

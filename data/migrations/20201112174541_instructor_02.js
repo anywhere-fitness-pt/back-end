@@ -2,11 +2,12 @@
 exports.up = async function(knex) {
     await knex.schema.createTable("instructor", (table)=>{
         table.increments("id")
+        table.text("fullname").notNull()
         table.text("username").notNull().unique()
 		table.text("password").notNull()
       })
 
-      await knex.schema.createTable("classList", (table)=>{
+      await knex.schema.createTable("categories", (table)=>{
         table.increments("id")
         table.text("name").notNull().unique()
         table.text("description").notNull()
@@ -22,9 +23,9 @@ exports.up = async function(knex) {
             .onUpdate("CASCADE")
             .notNull()
         table
-            .integer("classList_id").notNull()
+            .integer("categories_id").notNull()
             .references("id")
-            .inTable("classList")
+            .inTable("categories")
             .onDelete("SET NULL")
             .onUpdate("CASCADE")
             
@@ -39,6 +40,9 @@ exports.up = async function(knex) {
 
         table
             .text("intensity")
+
+            table
+            .text("duration")    
             
 
         table
@@ -52,6 +56,9 @@ exports.up = async function(knex) {
         table
             .text("location")
             .defaultTo("cureent")  
+
+            table
+            .text("maxClassSize")
              
 
 
@@ -60,8 +67,7 @@ exports.up = async function(knex) {
 
 exports.down = async function(knex) {
     knex.schema.dropTableIfExists("classes")
-    knex.schema.dropTableIfExists("classList")
+    knex.schema.dropTableIfExists("categories")
     knex.schema.dropTableIfExists("instructor")
   
-
 };
