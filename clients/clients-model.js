@@ -25,9 +25,10 @@ async function add(data) {
      return findById(id)  
 }
 
- function clientClaSignUp(cls) {
-     return  db("signUp")
-            .insert(cls)
+async function clientClaSignUp(cls) {
+    //  return  db("signUp")
+     const [id] = await db("signUp").insert(cls)
+     return findById(id) 
 
 }
 

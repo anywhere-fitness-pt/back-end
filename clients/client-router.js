@@ -88,7 +88,7 @@ router.get("/classes", cliRestrict(), async (req, res, next) => {
 // !!!!=========am getting null???=========!!!!//
 
 router.post("/:client_id/classes/signUp/:class_id", cliRestrict(), async (req, res, next) => {
-	console.log(signUp)
+	
 	try {
 		
         const signUp={ 

@@ -11,7 +11,7 @@ const router = express.Router()
 
 
 // ============working============//
-router.get("/", async (req, res, next) => {
+router.get("/", insRestrict(), async (req, res, next) => {
 	try {
 		const instroctor = await db.find()
         res.json(instroctor)
@@ -106,8 +106,7 @@ router.get("/:id/classes",insRestrict(), async (req, res, next) => {
 // |POST |  /api/instructor/:instructorId/classes 
 router.post('/:instructorId/classes', insRestrict(), async (req, res, next) => {
     try{
-        const classes = await db.addclasses(req.body)
-	   
+        const classes = await db.addclasses(req.body)  
 	res.status(201).json(classes)
     }catch(err){
         next(err)

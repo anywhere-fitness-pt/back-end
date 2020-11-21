@@ -54,10 +54,10 @@ function findInsClasses(id) {
              'c.time',
              'c.date',
              'c.location',
+             'c.duration',
              'c.maxClassSize',
-             'c.intensity'
-             
-             
+             'c.intensity',
+            
              )
     .where({ instructor_id: id })
     .first()
